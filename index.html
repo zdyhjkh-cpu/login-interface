@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lamp Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="scene">
+
+    <!-- الجسيمات المتلألئة في الخلفية -->
+    <div class="particles" id="particles"></div>
+
+    <!-- اللمبة -->
+    <div class="lamp-wrapper">
+      <div class="light-cone"></div>
+      <div class="lamp">
+        <div class="lamp-shade"></div>
+        <div class="lamp-bulb-glow"></div>
+        <div class="lamp-pole"></div>
+        <div class="lamp-base"></div>
+        <div class="pull-cord" id="pullCord">
+          <div class="cord-string"></div>
+          <div class="cord-handle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- كارت تسجيل الدخول -->
+    <div class="login-card" id="loginCard">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Enter your details to access your account</p>
+
+      <form id="loginForm">
+        <div class="input-group">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          </span>
+          <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+        </div>
+
+        <div class="input-group">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </span>
+          <input type="email" id="email" placeholder="Email Address" autocomplete="email" required>
+        </div>
+
+        <div class="input-group">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          </span>
+          <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+          <button type="button" class="toggle-pass" id="togglePass" aria-label="Show password" aria-pressed="false">
+            <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M17.9 17.9A10.6 10.6 0 0 1 12 20c-7 0-11-7-11-7a19.5 19.5 0 0 1 4.2-5.1M9.9 4.2A10.5 10.5 0 0 1 12 4c7 0 11 7 11 7a19.6 19.6 0 0 1-2.3 3.2M14.1 14.1a3 3 0 1 1-4.2-4.2"/><path d="M1 1l22 22"/></svg>
+          </button>
+        </div>
+
+        <p class="form-error" id="formError" aria-live="polite"></p>
+
+        <button type="submit" class="signin-btn" id="signinBtn">
+          <span class="btn-text">Sign In</span>
+        </button>
+      </form>
+
+      <div class="divider"><span>OR CONTINUE WITH</span></div>
+
+      <div class="social-row">
+        <button class="social-btn" id="googleBtn">
+          <svg viewBox="0 0 48 48" width="18" height="18"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.4 26.7 36 24 36c-5.3 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C39.9 36.9 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+          <span>Google</span>
+        </button>
+        <button class="social-btn" id="githubBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17 4.1 18 4.4 18 4.4c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+          <span>GitHub</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
